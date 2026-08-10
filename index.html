@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel Hernández Rogado | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="profile">
+            <h1>Miguel Hernández Rogado</h1>
+            <p>CFGS DAM | Software Developer<br>Diseño Narrativo</p>
+        </div>
+        <div class="nav-category">Desarrollo</div>
+        <div class="nav-item active" onclick="cambiarVista('vista-portfolio', this)">Proyectos Técnicos</div>
+        
+        <div class="nav-category">Escritura</div>
+        <div class="nav-folder">Universo Wolf 1061</div>
+        <div class="nav-item" onclick="cargarHistoria('vista-lector', this, './stories/guerra-gelida.md', 'Guerra Gélida')">Guerra Gélida (Novela)</div>
+    </nav>
+
+    <main class="main-content">
+        <div id="vista-portfolio" class="view active">
+            <div class="portfolio-container">
+                <div class="project-card">
+                    <h2>Emulador CHIP-8</h2>
+                    <p>Intérprete de bajo nivel programado desde cero. Gestión de memoria de 4KB y decodificación gráfica. La lógica pura detrás del hardware retro.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="vista-lector" class="view">
+            <div class="reader-container" id="reader-gg">
+                <div class="reader-header">
+                    <div class="reader-title" id="titulo-lector">Cargando...</div>
+                    <div class="reader-tools">
+                        <button title="Índice" onclick="toggleMenu('toc-menu', 'aa-menu')">☰</button>
+                        <button title="Opciones de texto" onclick="toggleMenu('aa-menu', 'toc-menu')">Aa</button>
+                        <button title="Pantalla Completa" onclick="toggleFullScreen('reader-gg')">⛶</button>
+                        
+                        <div class="aa-menu" id="aa-menu">
+                            <div class="menu-label" style="margin-bottom: -0.5rem;">Tamaño</div>
+                            <div class="aa-row">
+                                <button class="aa-btn" onclick="cambiarZoom(-10)">-</button>
+                                <span class="zoom-indicator" id="zoom-value">100%</span>
+                                <button class="aa-btn" onclick="cambiarZoom(10)">+</button>
+                            </div>
+                            <div class="menu-label" style="margin-top: 0.5rem; margin-bottom: -0.5rem;">Tema</div>
+                            <div class="aa-row">
+                                <button class="aa-btn" id="btn-tema-dia" onclick="cambiarTema('claro')" style="font-size: 1.2rem;">☀️</button>
+                                <button class="aa-btn" id="btn-tema-noche" onclick="cambiarTema('oscuro')" style="font-size: 1.2rem;">🌙</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toc-menu" id="toc-menu">
+                    <div class="toc-header">Índice</div>
+                    <div id="toc-list">
+                        </div>
+                </div>
+                
+                <div class="reader-body">
+                    <div class="book-content" id="content-gg" onclick="cerrarMenus()"></div>
+                </div>
+
+                <div class="reader-footer">
+                    <div class="progress-container"><input type="range" min="0" max="100" value="0" class="progress-slider" id="slider-gg" oninput="scrollToSlider('gg')"></div>
+                    <div class="pagination-controls">
+                        <button class="btn-turn" id="prev-gg" onclick="turnPage('gg', -1)" disabled>❮</button>
+                        <div class="page-counter" id="counter-gg">1-2 / ?</div>
+                        <button class="btn-turn" id="next-gg" onclick="turnPage('gg', 1)">❯</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
