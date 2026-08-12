@@ -112,7 +112,7 @@ const i18n = {
         "btnNext": "Next",
         
         // NARRATIVE TEXTS WOLF 1061
-        "w_guerra-gelida_title": "Guerra Gélida",
+        "w_guerra-gelida_title": "Frozen War",
         "w_guerra-gelida_meta": "MAIN STORY // WOLF 1061 SYSTEM",
         "w_guerra-gelida_synopsis": "The fragile balance of power between the three planets of the Wolf 1061 system is on the verge of collapse. On Visturia, a frozen world at minus eighty degrees, an arranged marriage stands as the Great Houses' last diplomatic hope to prevent a devastating interplanetary war.",
         
