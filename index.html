@@ -3,80 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miguel Hernández Rogado | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Miguel Hernández | Software Student</title>
+    <link rel="shortcut icon" href="img/pfp.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <nav class="sidebar">
-        <div class="profile">
-            <h1>Miguel Hernández Rogado</h1>
-            <p>CFGS DAM | Software Developer<br>Diseño Narrativo</p>
-        </div>
-        <div class="nav-category">Desarrollo</div>
-        <div class="nav-item active" onclick="cambiarVista('vista-portfolio', this)">Proyectos Técnicos</div>
+<!-- ========================================== -->
+    <!-- MODO 1: PORTFOLIO TÉCNICO                  -->
+    <!-- ========================================== -->
+    <div id="mode-portfolio">
         
-        <div class="nav-category">Escritura</div>
-        <div class="nav-folder">Universo Wolf 1061</div>
-        <div class="nav-item" onclick="cargarHistoria('vista-lector', this, './stories/guerra-gelida.md', 'Guerra Gélida')">Guerra Gélida (Novela)</div>
-    </nav>
-
-    <main class="main-content">
-        <div id="vista-portfolio" class="view active">
-            <div class="portfolio-container">
-                <div class="project-card">
-                    <h2>Emulador CHIP-8</h2>
-                    <p>Intérprete de bajo nivel programado desde cero. Gestión de memoria de 4KB y decodificación gráfica. La lógica pura detrás del hardware retro.</p>
+        <div class="left-panel">
+            <div class="brand-section">
+                <h1 class="logo">miguel.hr<span>()</span></h1>
+                <div class="subtitle" data-i18n="subtitle">Estudiante de Desarrollo // CFGS DAM</div>
+                <div class="hero-text" data-i18n="hero">
+                    Me preparo para diseñar <strong>arquitecturas sólidas</strong> y escribir código limpio. Busco mi <strong>primera oportunidad profesional</strong>.
                 </div>
             </div>
-        </div>
 
-        <div id="vista-lector" class="view">
-            <div class="reader-container" id="reader-gg">
-                <div class="reader-header">
-                    <div class="reader-title" id="titulo-lector">Cargando...</div>
-                    <div class="reader-tools">
-                        <button title="Índice" onclick="toggleMenu('toc-menu', 'aa-menu')">☰</button>
-                        <button title="Opciones de texto" onclick="toggleMenu('aa-menu', 'toc-menu')">Aa</button>
-                        <button title="Pantalla Completa" onclick="toggleFullScreen('reader-gg')">⛶</button>
-                        
-                        <div class="aa-menu" id="aa-menu">
-                            <div class="menu-label" style="margin-bottom: -0.5rem;">Tamaño</div>
-                            <div class="aa-row">
-                                <button class="aa-btn" onclick="cambiarZoom(-10)">-</button>
-                                <span class="zoom-indicator" id="zoom-value">100%</span>
-                                <button class="aa-btn" onclick="cambiarZoom(10)">+</button>
-                            </div>
-                            <div class="menu-label" style="margin-top: 0.5rem; margin-bottom: -0.5rem;">Tema</div>
-                            <div class="aa-row">
-                                <button class="aa-btn" id="btn-tema-dia" onclick="cambiarTema('claro')" style="font-size: 1.2rem;">☀️</button>
-                                <button class="aa-btn" id="btn-tema-noche" onclick="cambiarTema('oscuro')" style="font-size: 1.2rem;">🌙</button>
-                            </div>
-                        </div>
-                    </div>
+            <nav class="nav-menu">
+                <div class="nav-item active" onclick="cambiarVista('view-about', this)">
+                    <span class="nav-num">1</span> <div class="nav-line"></div> <span class="nav-label" data-i18n="nav1">Perfil y Habilidades</span>
                 </div>
+                <!-- Sección 2: Arquitectura / Backend -->
+                <div class="nav-item" onclick="cambiarVista('view-proyectos', this)">
+                    <span class="nav-num">2</span> <div class="nav-line"></div> <span class="nav-label" data-i18n="nav2">Proyectos Técnicos</span>
+                </div>
+                <!-- NUEVA SECCIÓN 3: VIDEOJUEGOS -->
+                <div class="nav-item" onclick="cambiarVista('view-juegos', this)">
+                    <span class="nav-num">3</span> <div class="nav-line"></div> <span class="nav-label" data-i18n="nav3">Videojuegos</span>
+                </div>
+            </nav>
 
-                <div class="toc-menu" id="toc-menu">
-                    <div class="toc-header">Índice</div>
-                    <div id="toc-list">
-                        </div>
+            <div class="bottom-actions">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="social-links">
+                        <a href="https://github.com/miguel-herrog" target="_blank" class="social-link">
+                            <!-- Icono de GitHub -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            Github ↗
+                        </a>
+                        <a href="https://www.linkedin.com/in/miguel-hernandez-dev/" target="_blank" class="social-link">
+                            <!-- Icono de LinkedIn -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            LinkedIn ↗
+                        </a>
+                    </div>
+                    <!-- SELECTOR DE IDIOMA -->
+                    <div class="lang-switch">
+                        <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+                        <span style="color: #555;">|</span>
+                        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+                    </div>
                 </div>
                 
-                <div class="reader-body">
-                    <div class="book-content" id="content-gg" onclick="cerrarMenus()"></div>
+                <div class="wolf-context">
+                    <span class="wolf-context-title" data-i18n="wolfTitle">Proyecto Destacado</span>
+                    <p class="wolf-context-desc" data-i18n="wolfDesc">Explora mi motor de lectura web a medida (JS puro / Paginación DOM) y mi universo de diseño narrativo personal.</p>
                 </div>
+                <button class="wolf-btn" onclick="activarModoLector()">
+                    <span data-i18n="wolfBtn">Acceder a Archivos Wolf 1061</span>
+                    <span>→</span>
+                </button>
+            </div>
+        </div>
 
-                <div class="reader-footer">
-                    <div class="progress-container"><input type="range" min="0" max="100" value="0" class="progress-slider" id="slider-gg" oninput="scrollToSlider('gg')"></div>
-                    <div class="pagination-controls">
-                        <button class="btn-turn" id="prev-gg" onclick="turnPage('gg', -1)" disabled>❮</button>
-                        <div class="page-counter" id="counter-gg">1-2 / ?</div>
-                        <button class="btn-turn" id="next-gg" onclick="turnPage('gg', 1)">❯</button>
+        <div class="right-panel">
+            
+            <!-- VISTA 1: PERFIL DEL DESARROLLADOR -->
+            <div id="view-about" class="view active">
+                <div class="section-header" data-i18n="aboutHeader">PERFIL DEL DESARROLLADOR</div>
+                
+                <div class="profile-grid">
+                    <!-- FOTO / BANNER ORIGINAL MANTENIDO -->
+                    <div class="profile-photo">
+                        <img src="img/banner.jpg" alt="Miguel" onerror="this.src='https://via.placeholder.com/800x400/111111/e0e0e0?text=Banner+Imagen'">
+                        <div class="overlay" data-i18n="photoOverlay">Disponible Primavera 2027</div>
+                    </div>
+
+                    <div class="profile-data">
+                        <!-- CARTA IZQUIERDA: About Me & Edu -->
+                        <div class="data-card">
+                            <div class="info-block">
+                                <span class="block-title" data-i18n="aboutTitle1">Sobre mí</span>
+                                <p data-i18n="aboutP1">Estudiante de Desarrollo de Software focalizado en construir una carrera sólida en arquitectura <i>backend</i> y lógica de sistemas.</p>
+                                <p data-i18n="aboutP2" style="margin-top: 0.5rem;"><strong>Objetivo (Primavera 2027):</strong><br>Busco prácticas internacionales en Europa financiadas totalmente por <strong>Erasmus+</strong> (coste cero para la empresa). Mi meta es resolver problemas reales y asentar bases junto a ingenieros Senior.</p>
+                            </div>
+                            
+                            <div class="info-block" style="margin-top: auto;">
+                                <span class="block-title" data-i18n="aboutTitle2">Educación Oficial</span>
+                                <div class="cert-box" style="padding: 1rem; border-style: dashed;">
+                                    <div class="cert-icon"><img src="img/IES_Venancio_Blanco.jpg" alt=""></div>
+                                    <div class="cert-info">
+                                        <strong data-i18n="edu1">CFGS Desarrollo Aplicaciones Multiplataforma (2025 - 2027)</strong>
+                                        <span>IES Venancio Blanco</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- CARTA DERECHA: Stack & Certs -->
+                        <div class="data-card">
+                            <div class="info-block">
+                                <span class="block-title" data-i18n="stackTitle">Stack Tecnológico</span>
+                                <div class="tag-grid">
+                                    <span class="tech-tag highlight">Java</span>
+                                    <span class="tech-tag highlight">C#</span>
+                                    <span class="tech-tag">SQL</span>
+                                    <span class="tech-tag">OOP</span>
+                                    <span class="tech-tag">Git / GitHub</span>
+                                </div>
+                            </div>
+
+                            <div class="info-block" style="margin-top: 1rem;">
+                                <span class="block-title" data-i18n="certTitle">Certificaciones & Idiomas</span>
+                                <div class="cert-grid">
+                                    <div class="cert-box">
+                                        <div class="cert-icon"><img src="img/cambridge.svg" alt=""></div>
+                                        <div class="cert-info">
+                                            <strong>First Cambridge</strong>
+                                            <span data-i18n="cert2">Inglés (Completado - Jul 2026)</span>
+                                        </div>
+                                    </div>
+                                    <div class="cert-box">
+                                        <div class="cert-icon"><img src="img/AZ-900.svg" alt="AZ-900"></div>
+                                        <div class="cert-info">
+                                            <strong>Microsoft AZ-900</strong>
+                                            <span data-i18n="cert1">Azure Fundamentals (Completado)</span>
+                                        </div>
+                                    </div>
+                                    <div class="cert-box">
+                                        <div class="cert-icon"><img src="img/google.svg" alt=""></div>
+                                        <div class="cert-info">
+                                            <strong>Google / Coursera</strong>
+                                            <span data-i18n="cert3">IA / Introducción a Git (En progreso)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
 
-    <script src="script.js"></script>
+            <!-- VISTA 2: PROYECTOS TÉCNICOS (Solo Arquitectura / Lógica) -->
+            <div id="view-proyectos" class="view">
+                <div class="section-header" data-i18n="projHeader">DEMOSTRACIÓN TÉCNICA</div>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://via.placeholder.com/640x360/111/fff?text=CHIP-8" alt="CHIP-8">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">C# • CPU Arch • Low-Level</div>
+                            <h3 class="project-title" data-i18n="p1Title">Intérprete CHIP-8</h3>
+                            <p class="project-desc" data-i18n="p1Desc">Desarrollo desde cero del núcleo de un emulador retro. Aplicación de control estricto de una memoria de 4KB, decodificación de <i>opcodes</i> hexadecimales y control de ciclos.</p>
+                            <a href="https://github.com/miguel-herrog" target="_blank" class="btn-link" data-i18n="btnRepo">Ver Código Fuente ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NUEVA VISTA 3: VIDEOJUEGOS -->
+            <div id="view-juegos" class="view">
+                <div class="section-header" data-i18n="gameHeader">DESARROLLO DE VIDEOJUEGOS</div>
+                
+                <div class="projects-grid" style="grid-template-columns: 1fr;">
+                    <!-- Tarjeta central de proyecto en desarrollo -->
+                    <div class="project-card" style="background: transparent; border: 1px dashed #555; align-items: center; justify-content: center; text-align: center; padding: 4rem;">
+                        <div class="project-meta">Game Design • Assembly • Logic</div>
+                        <h3 class="project-title" style="color: var(--text-muted);" data-i18n="gameWipTitle">ROM CHIP-8 (En Desarrollo)</h3>
+                        <p class="project-desc" style="max-width: 600px; margin: 1rem auto 0 auto;" data-i18n="gameWipDesc">Actualmente conceptualizando y diseñando mi primer videojuego nativo para ser ejecutado sobre mi propio intérprete CHIP-8. Aplicando conceptos de <i>game loop</i>, control de inputs y renderizado a bajo nivel.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- MODO 2: LECTOR AISLADO WOLF 1061           -->
+    <!-- ========================================== -->
+    <div id="mode-lector">
+        
+        <div class="reader-sidebar">
+            <div class="reader-header">
+                <button class="btn-back" onclick="desactivarModoLector()">
+                    <span>←</span> <span data-i18n="btnBack">Volver al Portfolio</span>
+                </button>
+            </div>
+            
+            <div class="file-list">
+                <button class="file-btn active-file" id="btn-intro" onclick="mostrarIntro(this)">
+                    <h4 data-i18n="introTitle">Introducción</h4>
+                    <p data-i18n="introSub">Base de Datos Narrativa</p>
+                </button>
+
+                <div class="sidebar-category" data-i18n="cat1">Historia Principal</div>
+                <button class="file-btn" onclick="mostrarSinopsis('guerra-gelida', this)">
+                    <h4 data-i18n="w_guerra-gelida_title">Guerra Gélida</h4>
+                    <p data-i18n="tagWip">Novela (WIP)</p>
+                </button>
+
+                <div class="sidebar-category" data-i18n="cat2">Relatos Cortos</div>
+                <button class="file-btn" onclick="mostrarSinopsis('el-mensajero', this)">
+                    <h4 data-i18n="w_el-mensajero_title">El Mensajero Kaelen</h4>
+                    <p data-i18n="tagShort">Relato Corto</p>
+                </button>
+
+                <div class="sidebar-category" data-i18n="cat3">Apéndices</div>
+                <button class="file-btn" onclick="mostrarSinopsis('historia-visturia', this)">
+                    <h4 data-i18n="w_historia-visturia_title">Historia de Visturia</h4>
+                    <p data-i18n="tagLore">Lore / Ensayo</p>
+                </button>
+            </div>
+        </div>
+
+        <div class="reader-main">
+            
+            <!-- INTRODUCCIÓN -->
+            <div id="rview-intro" class="reader-view active-rview">
+                <div class="intro-container">
+                    <h1 data-i18n="wolfMainTitle">Archivos Wolf 1061</h1>
+                    <p data-i18n="wolfIntro1">Bienvenido al repositorio documental del sistema estelar Wolf 1061. Este espacio recopila los registros históricos, novelas y ensayos de ciencia ficción dura que componen mi universo narrativo personal.</p>
+                    <p data-i18n="wolfIntro2">Selecciona cualquiera de los expedientes disponibles en el directorio lateral izquierdo para consultar su sinopsis oficial, metadatos y acceder al motor de lectura inmersiva.</p>
+                </div>
+            </div>
+
+            <!-- SINOPSIS -->
+            <div id="rview-synopsis" class="reader-view">
+                <div class="synopsis-container">
+                    <div class="synopsis-meta" id="syn-meta">NOVELA PRINCIPAL</div>
+                    <h1 id="syn-title">Título de la obra</h1>
+                    <div class="synopsis-box">
+                        <p id="syn-desc">Sinopsis oficial de la obra...</p>
+                    </div>
+                    
+                    <button class="btn-start-read" id="btn-start-read" onclick="lanzarLectorActivo()">[ <span data-i18n="btnRead">INICIAR LECTURA</span> ]</button>
+                    <div class="status-badge-wip" id="syn-status-msg" style="display: none;">[ <span data-i18n="msgWip">EN PROCESO DE CREACIÓN</span> ]</div>
+                </div>
+            </div>
+
+            <!-- LECTOR -->
+            <div id="rview-reader" class="reader-view" style="height: 100%;">    
+                <div class="reader-top-bar">
+                    <span id="lector-titulo" class="reader-doc-title">Documento</span>
+                    <button class="btn-toc" onclick="toggleToc()">☰ <span data-i18n="btnToc">Índice</span></button>
+                    <div class="toc-dropdown" id="toc-dropdown"></div>
+                </div>
+
+                <div class="book-container">
+                    <div class="book-content" id="el-texto"></div>
+                </div>
+
+                <div class="book-footer">
+                    <button class="btn-page" id="btn-prev" onclick="pasarPagina(-1)" disabled><span data-i18n="btnPrev">Anterior</span></button>
+                    
+                    <div class="progress-wrapper">
+                        <input type="range" class="progress-slider" id="progress-slider" min="0" max="100" value="0" oninput="scrollPorBarra()">
+                    </div>
+
+                    <span class="page-info" id="info-paginas">CARGANDO...</span>
+                    
+                    <button class="btn-page" id="btn-next" onclick="pasarPagina(1)" disabled><span data-i18n="btnNext">Siguiente</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/translation.js"></script>
+    <script src="scripts/readEngine.js"></script>
 </body>
 </html>
